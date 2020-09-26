@@ -1,6 +1,7 @@
 import 'dart:async';
-import 'package:credit_tracker/model/slide.dart';
-import 'package:credit_tracker/widgets/slide_item.dart';
+import '../model/slide.dart';
+import '../widgets/slide_dots.dart';
+import '../widgets/slide_item.dart';
 import 'package:flutter/material.dart';
 
 class GettingStarted extends StatefulWidget {
@@ -31,8 +32,6 @@ class _GettingStartedState extends State<GettingStarted> {
       _pageController.animateToPage(_currentPage,
           duration: Duration(milliseconds: 300), curve: Curves.easeIn);
     });
-
-
   }
 
   @override
@@ -57,12 +56,36 @@ class _GettingStartedState extends State<GettingStarted> {
           child: Column(
             children: <Widget>[
               Expanded(
-                child: PageView.builder(
-                  scrollDirection: Axis.horizontal,
-                  controller: _pageController,
-                  onPageChanged: _onPageChanged,
-                  itemCount: slideList.length,
-                  itemBuilder: (ctx, i) => SlideItem(i),
+                child: Stack(
+                  alignment: AlignmentDirectional.bottomCenter,
+                  children: <Widget>[
+                    PageView.builder(
+                      scrollDirection: Axis.horizontal,
+                      controller: _pageController,
+                      onPageChanged: _onPageChanged,
+                      itemCount: slideList.length,
+                      itemBuilder: (ctx, i) => SlideItem(i),
+                    ),
+                    Stack(
+                      alignment: AlignmentDirectional.topStart,
+                      children: <Widget>[
+                        Container(
+                          margin: const EdgeInsets.only(bottom: 35),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              for(int i=0 ; i<slideList.length; i++)
+                                if(i ==_currentPage)
+                                  SlideDots(true)
+                                else
+                                  SlideDots(false)
+                            ],
+                          ),
+                        )
+                      ],
+                    )
+                  ],
                 ),
               ),
               SizedBox(
