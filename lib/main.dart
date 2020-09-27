@@ -1,7 +1,8 @@
-import 'package:credit_tracker/screens/getting_started.dart';
+import './screens/getting_started.dart';
+import './screens/login_screen.dart';
 import 'package:flutter/material.dart';
-import 'screens/details_screen.dart';
-import 'screens/home_screen.dart';
+import './screens/details_screen.dart';
+import './screens/home_screen.dart';
 
 
 void main() {
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
         '/': (_) => GettingStarted(),
         '/homeScreen': (_) => HomeScreen(),
         DetailsScreen.routeName: (_) => DetailsScreen(),
+        LoginScreen.routeName: (ctx) => LoginScreen(),
       },
     );
   }

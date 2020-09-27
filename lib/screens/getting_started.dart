@@ -1,8 +1,10 @@
 import 'dart:async';
+
 import '../model/slide.dart';
 import '../widgets/slide_dots.dart';
 import '../widgets/slide_item.dart';
 import 'package:flutter/material.dart';
+import '../screens/login_screen.dart';
 
 class GettingStarted extends StatefulWidget {
   // Page Controller for PageView builder
@@ -104,7 +106,9 @@ class _GettingStartedState extends State<GettingStarted> {
                     padding: const EdgeInsets.all(15),
                     color: Theme.of(context).primaryColor,
                     textColor: Colors.white,
-                    onPressed: () => {},
+                    onPressed: () => {
+
+                    },
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -122,6 +126,9 @@ class _GettingStartedState extends State<GettingStarted> {
                             fontSize: 18,
                           ),
                         ),
+                        onPressed: () {
+                          Navigator.of(context).pushNamed(LoginScreen.routeName);
+                        },
                       ),
                     ],
                   ),
