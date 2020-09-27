@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import '../screens/signup_screen.dart';
+
 import '../model/slide.dart';
 import '../widgets/slide_dots.dart';
 import '../widgets/slide_item.dart';
@@ -107,7 +109,7 @@ class _GettingStartedState extends State<GettingStarted> {
                     color: Theme.of(context).primaryColor,
                     textColor: Colors.white,
                     onPressed: () => {
-
+                    Navigator.of(context).pushNamed(SignUpScreen.routeName)
                     },
                   ),
                   Row(
@@ -126,8 +128,8 @@ class _GettingStartedState extends State<GettingStarted> {
                             fontSize: 18,
                           ),
                         ),
-                        onPressed: () {
-                          Navigator.of(context).pushNamed(LoginScreen.routeName);
+                        onPressed: () => {
+                          Navigator.of(context).pushNamed(LoginScreen.routeName)
                         },
                       ),
                     ],

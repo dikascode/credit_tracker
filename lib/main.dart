@@ -1,12 +1,21 @@
+import 'package:flutter/services.dart';
+
+import './screens/signup_screen.dart';
+import 'package:flutter/services.dart';
 import './screens/getting_started.dart';
 import './screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import './screens/details_screen.dart';
 import './screens/home_screen.dart';
 
-
 void main() {
-  runApp(MyApp());
+  //Ensure initialization before binding
+  WidgetsFlutterBinding.ensureInitialized();
+  //Set app to run on only portrait mode
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((_) {
+    runApp(MyApp());
+  });
 }
 
 class MyApp extends StatelessWidget {
@@ -39,8 +48,8 @@ class MyApp extends StatelessWidget {
         '/homeScreen': (_) => HomeScreen(),
         DetailsScreen.routeName: (_) => DetailsScreen(),
         LoginScreen.routeName: (ctx) => LoginScreen(),
+        SignUpScreen.routeName: (ctx) => SignUpScreen(),
       },
     );
   }
 }
-
